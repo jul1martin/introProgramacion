@@ -1,0 +1,331 @@
+1)  Dadas las siguientes especificaciones, dar valores de entrada y salida que cumplan con los requiere y asegura
+respectivamente:
+
+a)
+problema duplicar (x: Z) : Z {
+     requiere: {True}
+     asegura: {resultado es el doble de x}
+}
+
+duplicar(1) -> resultado = 2
+duplicar(6) -> resultado = 12
+duplicar(8) -> resultado = 16
+
+b) 
+problema raizCuadrada (x: Z) : R {
+     requiere: {x es positivo}
+     asegura: {resultado es la ra´ız cuadrada de x}
+}
+
+raizCuadrada(4) ->  resultado = 2 
+raizCuadrada(16) -> resultado = 4
+raizCuadrada(100) -> resultado = 10 
+
+c)
+problema enteroMasCercanoPositivo (x: R) : Z {
+     requiere: {True}
+     asegura: {resultado es el entero m´as cercano de x}
+     asegura: {resultado es positivo}
+}
+enteroMasCercanoPositivo(5.2) -> resultado = 5
+
+d) 
+problema raicesCuadradasUno (s: seq⟨Z⟩) : seq⟨R⟩ {
+     requiere: {Todos los elementos de s son positivos}
+     requiere: {No hay elementos repetidos en s}
+     asegura: {resultado tiene la misma cantidad de elementos que s}
+     asegura: {Los elementos de resultado son la salida de aplicar el problema raizCuadrada() a todos los elementos de
+     la secuencia s}
+     asegura: {El orden de la secuencia resultado es el mismo que en la secuencia s}
+}
+
+raicesCuadradasUno(seq<4,100,9>) -> resultado = seq<2,10,3>
+
+e) 
+problema raicesCuadradasDos (s: seq⟨Z⟩) : seq⟨R⟩ {
+     requiere: {Todos los elementos de s son positivos}
+     requiere: {No hay elementos repetidos en s}
+     asegura: {resultado tiene la misma cantidad de elementos que s}
+     asegura: {Los elementos de resultado son la salida de aplicar el problema raizCuadrada() a todos los elementos de
+     la secuencia s}
+}
+raicesCuadradasDos(seq<4,100,9>) -> resultado = seq<2,10,3>
+
+f) 
+problema raicesCuadradasTres (s: seq⟨Z⟩) : seq⟨R⟩ {
+     requiere: {Todos los elementos de s son positivos}
+     requiere: {No hay elementos repetidos en s}
+     asegura: {resultado tiene la misma cantidad de elementos que s}
+     asegura: {Los elementos de resultado son la salida de aplicar el problema raizCuadrada() a uno o varios elementos
+     de la secuencia s}
+}
+raicesCuadradasTres(seq<4,100,9>) -> resultado = seq<10>
+
+g) 
+problema raicesCuadradasCuatro (s: seq⟨Z⟩) : seq⟨R⟩ {
+     requiere: {Existen elementos de s que son positivos}
+     requiere: {No hay elementos repetidos en s}
+     asegura: {Los elementos de resultado son la salida de aplicar el problema raizCuadrada() a todos los elementos de s
+     que son positivos}
+}
+raicesCuadradasCuatro(seq<-4,-100,9>) -> resultado = seq<3>
+
+h) 
+problema raicesCuadradasCinco (s: seq⟨Z⟩) : seq⟨R⟩ {
+     requiere: {Todos los elementos de s son positivos}
+     asegura: {Cada posici´on de resultado es la salida de aplicar raizCuadrada() a cada elemento que se encuentra en esa
+     posici´on en s}
+}
+raicesCuadradasCinco(seq<4,100,9>) -> resultado = seq<2,10,3>
+
+i) 
+problema raicesCuadradasSeis (s: seq⟨Z⟩) : seq⟨R⟩ {
+     requiere: {Todos los elementos de s son positivos}
+     asegura: {La longitud de resultado es como m´aximo la misma que s}
+     asegura: {Cada posici´on de resultado es la salida de aplicar raizCuadrada() a cada elemento que se encuentra en esa
+     posici´on en s}
+}
+raicesCuadradasSeis(seq<4,100,9>) -> resultado = seq<2,10>
+
+Ejercicio 2. Responder las siguientes preguntas bas´andonos en los ejercicios del punto anterior.
+
+1. En los problemas raicesCuadradas que utilizan el problema raizCuadrada, ¿Se puede eliminar el requiere: “Todos los
+elementos de s son positivos” ? Justificar.
+
+Se podria eliminar, unicamente deberia cambiarse el asegura, como en raicesCuadradasCuatro(), permite cualquier entero, pero solo le hace la funcion a los que son positivos.
+
+2. ¿Que consecuencia tiene la la diferencia de asegura en el resultado entre los problemas raicesCuadradasUno y raicesCuadradasDos?
+
+La consecuencia seria que la secuencia que devuelve en la raicesCuadradasDos() puede ser desordenada, en raicesCuadradasUno, asegura que esto no sucederia.
+
+3. En base a la respuesta del item anterior, ¿un algoritmo que satisface la especificacion de raicesCuadradasUno, tambien
+satisface la especificacion de raicesCuadradasDos? ¿y al reves?
+
+Si, unicamente no podria estar desordenado. Al reves no, ya que no asegura que devuelve ordenada la sequencia de la misma manera que la secuencia S.
+
+4. Explicar en palabras las diferencias entre los problemas raicesCuadradasCinco y raicesCuadradasSeis. ¿Como influye el
+asegura de longitud maxima? ¿Es ⟨√3,√9⟩ una salida valida para ambos problemas, dado s = ⟨3, 9, 11, 15, 18⟩ ? ¿Es
+⟨√3,√9,√11,√13⟩ una salida valida para el problema raicesCuadradasCinco dado s = ⟨3, 9, 11⟩ ?
+
+La diferencia mas clara es que en la raicesCuadradasSeis() asegura que el resultado tendra el maximo de la longitud de la secuencia s, sin embargo no cambiaria en el problema.
+No es valida para ninguno de los 2 problemas, por el asegura que tienen ambos: 
+"Cada posicion de resultado es la salida de aplicar raizCuadrada() a cada elemento que se encuentra en esa posicion en s"
+No es valido tampoco porque esta agregando mas posiciones al resultado, cosa que asegura que la lista esta formada por la raiz cuadrada de la secuencia S.
+
+5. ¿Como me cambia en el problema raicesCuadradasCuatro agregar un asegura que diga que resultado tiene misma longitud
+que s?
+
+Habria un error ya que sus require contemplan que ingresen enteros negativos, por lo tanto daria error al realizar la raiz cuadrada
+
+6. ¿Si los problemas raicesCuadradasDos y raicesCuadradasTres tienen el mismo resultado para la misma entrada (una
+secuencia especıfica de numeros), quiere decir que son el mismo problema?
+
+No necesariamente por que devuelvan la misma secuencia son el mismo problema, podemos considerar que son mismos problemas por la especificacion que tiene (el resultado asegura lo mismo y requiere lo mismo en los 2 problemas)
+
+
+7. ¿Que ocurre si eliminamos los requiere “no hay repetidos”? ¿Es ⟨2, 2, 1⟩ una salida valida para el problema raicesCuadradasDos dado s = ⟨4, 1, 1⟩ ?
+
+Funcionaria de la misma manera, unicamente se podrian repetir resultados en el retorno. No es valido, no porque este repetido un elemento, sino porque la raizCuadrada(1) no devuelve 2
+
+Ejercicio 3. 
+Responder las preguntas dada la siguiente especificacion para el problema de ordenar una secuencia de enteros (es
+decir, dada una secuencia de enteros, devolver los mismos elementos ordenados de menor a mayor):
+
+problema ordenar (s: seq⟨Z⟩) : seq⟨Z⟩ {
+     requiere: {True}
+     asegura: {resultado es una secuencia en la cual cada elemento es estrictamente mayor que el anterior}
+}
+
+a) Dado s = ⟨4, 3, 5⟩ como secuencia de entrada, ¿es resultado = ⟨3, 4, 5⟩ una solucion valida segun la especificacion? Es valida.
+
+b) Dado s = ⟨4, 3, 3, 5⟩ como secuencia de entrada, ¿es resultado = ⟨3, 3, 4, 5⟩ una solucion valida segun la especificacion? Corregir
+la especificacion modificando el requiere.
+
+No es valida ya que como se repite un elemento, no van a ser estrictamente mayores que el anterior.
+Solucion: requiere: {Los elementos de s no se pueden repetir}
+
+c) Si tomamos s = ⟨4, 3, 5⟩ como secuencia de entrada, ¿es resultado = ⟨3, 4⟩ una solucion valida segun la especificacion? Corregir
+la especificacion modificando el asegura
+Es valido, porque no asegura que tiene que devolver todos los elementos. Solo asegura que cada elemento va a ser mayor al anterior
+Solucion: asegura: {resultado es una secuencia que tiene todos los elementos de s}
+
+d) Si tomamos s = ⟨4, 3, 5⟩ como secuencia de entrada, ¿es resultado = ⟨3, 4, 5, 6⟩ una solucion valida segun la especificacion?
+Corregir la especificacion modificando el asegura
+Es valido porque cumple el asegura.
+Solucion: asegura: {La longitud de resultado es como maximo la misma que s}
+          asegura: {resultado es una secuencia que tiene unicamente todos los elementos de s}
+
+e) Escribir una especificacion que permita recibir cualquier secuencia s como parametro y garantice que resultado contiene el
+resultado de ordenar correctamente s
+
+problema ordenar (s: seq⟨Z⟩) : seq⟨Z⟩ {
+     requiere: {Los elementos de s no se pueden repetir}
+     asegura: {La longitud de resultado es como maximo la misma que s}
+     asegura: {resultado tiene unicamente todos los elementos de s}
+     asegura: {resultado es una secuencia en la cual cada elemento es estrictamente mayor que el anterior}
+}
+
+Ejercicio 4. Se desea especificar el problema de duplicar todos los valores de la secuencia y se cuenta con la siguiente especificacion:
+problema duplicarTodos (s: seq⟨Z⟩) : seq⟨Z⟩ {
+     requiere: {True}
+     asegura: {resultado tiene la misma cantidad de elementos que s}
+}
+
+a) ¿Que problemas tiene la especificacion dada? Dar ejemplos de valores para resultado que satisfagan la especificacion pero no
+sean respuestas correctas.
+
+No necesariamente devolvera como resultado, enteros que pertenezcan a la secuencia S.Tampoco asegure que duplique los elementos de s.
+
+duplicarTodos(seq<1,5,10>) <-> seq<1,2,3>
+
+b) Indicar cual/es se los siguientes asegura deberıa/n ser agregado/s a la especificaci´on. Justificar en cada caso por que deberıan
+o no ser agregados.
+
+asegura: {Para cada valor x que pertenece a s, hay algun valor en resultado que es la salida de duplicar(x).}
+No deberia, por que asegura que duplicara los valores, dice que estara en alguna posicion, no necesariamente la misma que la de s. Ademas de que no asegure que duplique todos.
+
+asegura: {En cada posicion de resultado, el valor es mayor al valor en esa misma posicion de s.}
+No hace falta asegurar esto, ya que, por ejemplo si la secuencia tiene algun numero negativo, el duplicado no sera mayor, sera menor
+
+duplicarTodos(seq<-1,5,-10>) <-> seq<-2,10,-20>
+-1 > -2
+
+asegura: {En cada posicion de resultado, el valor es igual a la salida de aplicar duplicar() al valor en esa misma posicion de s.}
+Deberia estar en la especificacion. Porque es lo que pide el problema, devolver todos los valores de la secuencia duplicados.
+
+asegura: {Todos los elementos de resultado son numeros pares.} 
+No es necesario, con que sea un entero se podra duplicar.
+
+Nota: el problema duplicar() esta especificado en el Ejercicio 1.
+
+Ejercicio 5. Tıtulo: Frecuencia de bondis.
+A Ciudad Universitaria (CU) llegan 8 lıneas de colectivos (28, 33, 34, 37, 45,107, 160, 166). 
+Con el fin de controlar la frecuencia diaria de cada una de ellas, un grupo de investigacion del Departamento de
+Computacion instalo camaras y sistemas de reconocimiento de imagenes en el ingreso al predio. Durante cada dıa dicho sistema
+identifica y registra cada colectivo que entra, almacenando la informacion de a que linea pertenece en una secuencia.
+a) Especificar el problema cantidadColectivosLinea() que a partir de la secuencia de colectivos que entran a CU, el numero de
+una de las lıneas que entra a CU, y una secuencia que cumpla con la descripcion del sistema presentado, devuelva cuantos
+colectivos de esa lınea ingresaron durante el dıa.
+
+problema cantidadColectivosLinea(linea : Int, colectivos : seq<Int>): Int {
+     require: {linea tiene que pertenecer a seq<28, 33, 34, 37, 45,107, 160, 166>}
+     require: {Todos los elementos que esten en colectivos tienen que pertenecer a seq<28, 33, 34, 37, 45,107, 160, 166>}
+     asegura: {resultado sera un valor mayor o igual a 0}
+     asegura: {Le sumara +1 al resultado (comienza en 0) cada vez que linea figure en la secuencia colectivos}
+}
+
+b) Especificar el problema compararLineas() que a partir de los numeros de 2 lıneas y una secuencia que cumpla con la descripcion
+del sistema presentado, devuelva cual de las dos lıneas tiene mejor frecuencia diaria (utilizar cantidadColectivosLinea())
+
+problema compararLineas(linea1 : Int, linea2 : Int, colectivos: seq<Int>): Int {
+     require: {linea1 != linea2}
+     require: {linea1 y linea2 tienen que pertenecer a seq<28, 33, 34, 37, 45,107, 160, 166> }
+     require: {Todos los elementos que esten en colectivos tienen que pertenecer a seq<28, 33, 34, 37, 45,107, 160, 166>}
+     
+     asegura: {Si cantidadColectivosLinea(linea1, colectivos) > cantidadColectivosLinea(linea2, colectivos), resultado = linea1}
+     asegura: {Si cantidadColectivosLinea(linea1, colectivos) < cantidadColectivosLinea(linea2, colectivos), resultado = linea2}
+     asegura: {Si cantidadColectivosLinea(linea1, colectivos) = cantidadColectivosLinea(linea2, colectivos), resultado = linea2}
+
+     //Porque
+     asegura: {result = l1 ∨ result = l2}
+     asegura: {cantColectivosLinea(result, bondis) ≥
+     cantColectivosLinea(l1, bondis) ∧
+     cantColectivosLinea(result, bondis) ≥
+     cantColectivosLinea(l2, bondis)}
+}
+
+Ejercicio 6. Tıtulo: Control de Notas en el Departamento de Ciencias
+En el prestigioso Departamento de Ciencias de una reconocida universidad, un grupo de alumnos se ha embarcado en su
+jornada academica, cursando diversas materias bajo el cuidadoso seguimiento del cuerpo docente. En este departamento, cada
+alumno ha sido registrado con su respectivo nombre y apellido, asegurandose de que no existan duplicados.
+La informacion relevante de las cursadas de los estudiantes se encuentra almacenada en un sistema que contiene una secuencia
+de tuplas en formato (materia, nota obtenida). Las notas se encuentran en un rango de calificaciones entre 0 y 10.
+El Departamento ha establecido una polıtica de aprobacion y recursado que dicta que si un alumno aprueba una materia con
+una nota igual o superior a 4, no debera volver a cursarla, quedando esta materia registrada como aprobada en su expediente
+academico. Sin embargo, si no logra alcanzar la nota mınima de aprobacion, tendra la posibilidad de recursar la materia en un
+futuro intento.
+Ademas existe en el sistema una estructura de datos llamada “NotasDelDc” que contendra la informacion relevante de los
+alumnos y sus cursadas. Esta estructura es una secuencia de tuplas en el formato (Alumno × Cursada), donde “Alumno” es el
+nombre y apellido del estudiante y “Cursada” es la secuencia de tuplas mencionada mas arriba.
+Considerando lo mencionado, se pide especificar lo siguiente:
+
+-sin duplicados
+-tuplas (materia, nota (0-10))
+-nota igual o > 4 aprueba. Sino recursa
+-tupla (Alumno x cursada(tuplas (materia, nota (0-10))))
+
+a) Especificar problema promedioDeAlumno (notas: seq⟨String × Z⟩) : R
+
+problema promedioDeAlumno (materias: seq⟨String × Z⟩) : R {
+     requiere: {La secuencia no puede tener materias repetidas}
+     requiere: {0 <= nota <= 10}
+     asegura: {Devuelve el numero de sumarNotas(notas) / totalMaterias(notas) }
+}
+
+problema sumarNotas (materias: seq⟨String × Z⟩) : R {
+     requiere: {La secuencia no puede tener materias repetidas}
+     requiere: {0 <= materias.nota <= 10}
+     asegura: {resultado es la sumatoria de las notas de todas las tuplas}
+}
+
+problema totalMaterias (materias: seq⟨String × Z⟩) : Int {
+     requiere: {La secuencia no puede tener materias repetidas}
+     asegura: {El resultado es la suma de todas las tuplas de materias}
+}
+
+b) Especificar un problema que dado el listado de materias cursadas de un alumno, indique en que materia tuvo mayor nota.
+Luego pensar, ¿como se debe modificar la especificacion si se desea devolver ahora el listado de materias en las cuales tuvo
+mejor nota?
+
+problema materiaConMayorNota (materias: seq⟨String × Z⟩) : R {
+     requiere: {La secuencia no puede tener materias repetidas}
+     requiere: {0 <= materias.nota <= 10}
+     asegura: {Devuelve el String de la tupla que tenga nota estrictamente mayor a las demas de la secuencia}
+}
+
+Modificaciones:
+
+problema materiaConMayorNota (materias: seq⟨String × Z⟩) : seq⟨String × Z⟩ {
+     requiere: {La secuencia no puede tener materias repetidas}
+     requiere: {0 <= materias.nota <= 10}
+     asegura: {El resultado es seq⟨String × Z⟩ devolviendo materias pero ordenado de mejor a peor nota}
+}
+
+c) Especificar el problema que devuelve todos los alumnos que cursaron y aprobaron cierta materia. Luego pensar, ¿como debe
+modificarse la especificacion para que los nombres se devuelvan en orden alfabetico? ¿Este cambio reduce o amplıa la cantidad
+de programas que resolverıan el problema?
+
+problema alumnosAprobados (alumnos: seq⟨String × seq⟨String × Z⟩⟩, materia: String) : seq⟨String⟩ {
+     requiere: {La secuencia alumnos no puede tener nombres repetidos}
+     requiere: {La materia debe de existir en el departamento de Computacion}
+     asegura: {nota = Z la nota de la materia solicitada}
+     asegura: {Devuelve todos los alumnos que materia exista en la lista de notas y estaAprobada(nota) = True}
+}
+
+problema estaAprobada(nota: Int): Bool {
+     require: {0 <= nota <= 10}
+     asegura: {Si nota >= 4,resultado = True}
+     asegura: {Si nota < 4,resultado = False}
+}
+
+Modificacion
+
+problema alumnosAprobados ((alumnos: seq⟨String × seq⟨String × Z⟩⟩, materia: String) : seq⟨String⟩ {
+     requiere: {La secuencia alumnos no puede tener nombres repetidos}
+     requiere: {La materia debe de existir en el departamento de Computacion}
+     asegura: {nombre = String la nota de la materia solicitada}
+     asegura: {nota = Z la nota de la materia solicitada}
+     asegura: {Devuelve todos los alumnos que la materia solicitada exista en la lista de notas y estaAprobada(nota) = True.}
+     asegura: {resultado esta ordenado alfabeticamente por nombre}
+}
+
+Siento que reduciria la cantidad de programas que pueden solucionar este problema.
+
+
+d) Especificar el problema de devolver una secuencia con los promedios de todos los alumnos.
+
+problema alumnosAprobados (alumnos: seq⟨String × seq⟨String × Z⟩⟩) : seq⟨String x Z⟩ {
+     requiere: {La secuencia alumnos no puede tener nombres repetidos}
+     asegyra: {alumno = Cada elemento de la secuencia alumnos }
+     asegura: {Devuelve una secuencia con el nombre del alumno y promedioDeAlumno(alumno)}
+}

@@ -1,0 +1,69 @@
+Guia 1:
+
+1)
+a) No, porque no esta conectada con nada
+b) Faltan parentesis
+c) No, faltan parantesis
+d)Faltan parentesis
+e) No, faltan parent
+f) Esta bien formulada
+g) Bien formulada
+h) Bien formulada
+i) No esta bien formulada
+
+2) 
+a) Esta bien formulada, se puede evaluar
+b)Faltan las parentesis
+c)No, porque son enteros
+d)Esta bien definida
+e)No esta bien definida, ya que es un Bool y 0/1 son del entero
+f) No, porque esta sumando
+
+3) Esta bien formulada porque la primera condicion esta comparando 2 numeros, y la segunda conducion es un buleano, es valid, ademas tiene los parentesis.
+4) 
+a) (¬a ∨ b) 
+1. <-> (¬True v True)
+<-> (False v True)
+<-> True
+2. <-> (¬False v False)
+<-> (True v False)
+<-> True
+b) (c ∨ (y ∧ x) ∨ b) 
+1.<-> (True V (False A False) V True) 
+<-> (True V False V T)
+<-> T
+2.<-> (False V (Ve A Ve)V Fa) 
+<-> (False V True V False)
+<-> T
+C)¬(c ∨ y)
+1.<->¬(True V False)
+<->True
+2.<->(False V True)
+<->True
+d)(¬(c ∨ y) ↔ (¬c ∧ ¬y))
+1.<->(¬(True V False) <-> (¬True A ¬False))
+<->(False <-> (False A True))
+<->(F<->F)
+<->True
+2.<->(¬(False V True) <-> (¬False A ¬True))
+<->(False <-> (False A True))
+<->(F<->F)
+<->True
+e)(¬(c ∨ y) ↔ (¬c ∧ ¬y))
+1.<->(¬(True ∨ False) ↔ (¬True ∧ ¬False))
+<->(¬True <-> (False A True))
+<->(F<->F)
+<->True
+e) ((c ∨ y) ∧ (x ∨ b))
+<->((T ∨ F) ∧ (F ∨ T))
+<->(T A T)
+<->T
+f)(((c ∨ y) ∧ (x ∨ b)) ↔ (c ∨ (y ∧ x) ∨ b))
+<->(((T ∨ F) ∧ (F ∨ T)) ↔ (T ∨ (F ∧ F) ∨ T))
+<->((T A T <-> (T V F V T)
+<->(T<->T)<->T
+g)(¬c ∧ ¬y)
+<->(False A True)
+<->False
+
+5) Determinar, utilizando tablas de verdad, si las siguientes f´ormulas son tautolog´ıas, contradicciones o contingencias
