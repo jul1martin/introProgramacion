@@ -162,5 +162,21 @@ posPrimerPar (x, y, z) | esPar x = 0
                        | esPar z  = 2
                        | otherwise = 4
 
-        
+-- g) problema crearPar (seq(Float x Float)) : Int {
+--        requiere: { True }
+--        asegura: { Arma un valor con los 2 componentes de la secuencia que estrictamente es par, si ya es par se envia ese resultado, sino se le suma 1}
+-- }
+
+crearPar :: (Int, Int) -> Int
+crearPar componentes | esPar (sumarComp (fst componentes) (snd componentes)) == False = 1 + sumarComp (fst componentes) (snd componentes)
+                    | otherwise = sumarComp (fst componentes) (snd componentes)
+                    where sumarComp c1 c2 = (absoluto c1) + (absoluto c2)    
+
+-- h) problema invertir (seq(Float x Float)) : Int {
+--        requiere: { Tienen que ser par }
+--        asegura: {  result invierte la secuencia par}
+-- }
+
+invertir :: (Int, Int) -> (Int, Int)
+invertir componentes = (snd componentes, fst componentes)
 
