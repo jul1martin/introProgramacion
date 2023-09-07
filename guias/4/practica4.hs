@@ -82,8 +82,22 @@ cantDigitos n | n < 10 = 1
 --       asegura: { result = false, si al menos un digito es distinto a otro}
 -- }
 
--- esCapicua :: Int -> Bool
--- esCapicua x | x == 0 = True
---             | cantDigitos x > 1 && x != sacarSiguiente = False
---             | otherwise =  esCapicua (sacarUltimo n)
---             where sacarSiguiente x = x div 100 
+esCapicua :: Int -> Bool
+esCapicua x | cantDigitos x == 1 = True
+            | iesimoDigitoRec x ((cantDigitos x) - 1) == (ultimoDigito x) = esCapicua (sacarUltimo x)
+            | otherwise = False
+
+--Ejercicio 11
+-- problema eAprox (Int): Float {
+--       require: { True }
+--       asegura: { retorna = 1 si el valor es 1  }
+--       asegura: { retorna el valor mas aproximado a e dependiendo el valor ingresado }
+-- }
+
+eAprox :: Int -> Float
+eAprox x | x == 0 = 1
+         | otherwise = (1 / (factorial x)) + eAprox (x - 1)
+         
+factorial :: Float -> Float
+factorial x | x == 1 = 1
+            | otherwise = x * factorial (x - 1)
