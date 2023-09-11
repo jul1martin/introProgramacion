@@ -157,3 +157,37 @@ existsInFibonacci n fibo | fibo == 0 && n /= 0 = False
 esFibonacci :: Integer -> Bool
 esFibonacci n | existsInFibonacci n n == True = True
               | otherwise = False
+
+-- Clase
+menorDivisorHasta :: Int -> Int -> Int
+menorDivisorHasta x d | x == d = x
+                      | mod x d == 0 = d
+                      | otherwise = menorDivisorHasta x (d + 1)
+
+menosDivisor :: Int -> Int
+menosDivisor x = menorDivisorHasta x 2
+
+esPrimo :: Int -> Bool
+esPrimo x = menosDivisor x == x
+
+proximoPrimo :: Int -> Int
+proximoPrimo x | esPrimo x = x
+               | otherwise = proximoPrimo (x + 1)
+
+kEsimoPrimo :: Int -> Int
+kEsimoPrimo 1 = 2
+kEsimoPrimo k = proximoPrimo (kEsimoPrimo (k - 1) + 1)
+
+sumaDePrimerosKPrimos :: Int -> Int
+sumaDePrimerosKPrimos 1 = 2
+sumaDePrimerosKPrimos k = kEsimoPrimo k +  sumaDePrimerosKPrimos (k - 1)
+
+esSumaDePrimerosKPrimos :: Int -> Int -> Bool
+esSumaDePrimerosKPrimos n k | n == sumaDePrimerosKPrimos k = True
+                            | n < sumaDePrimerosKPrimos k = False
+                            | otherwise = esSumaDePrimerosKPrimos n (k + 1)
+
+esSumaInicialDePrimos :: Int -> Bool
+esSumaInicialDePrimos n = esSumaDePrimerosKPrimos n 1
+
+-- La otra solucion seria ir restando de primos
