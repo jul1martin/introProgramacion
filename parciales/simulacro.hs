@@ -1,3 +1,5 @@
+module Simulacro where
+
 --Inicia funciones auxiliares
 
 -- Chequea si una tupla tiene la persona en los 2 espacios de la tupla
@@ -46,7 +48,8 @@ personas ((pers1,pers2):relaciones) | not (existeEnRelaciones pers1 relaciones) 
 
 amigosDe :: String -> [(String, String)] -> [String]
 amigosDe _ [] = []
-amigosDe persona (rel:relaciones) | coincideConAlgunaPersona persona rel = [fst rel, snd rel]++(amigosDe persona relaciones)
+amigosDe persona (rel:relaciones) | coincideConAlgunaPersona persona rel && (fst rel == persona) = [snd rel]++(amigosDe persona relaciones)
+                                  | coincideConAlgunaPersona persona rel = [fst rel]++(amigosDe persona relaciones)
                                   | otherwise = amigosDe persona relaciones
 
 maxCantidadAmigos :: [String] -> [(String, String)] -> String
